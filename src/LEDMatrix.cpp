@@ -2,14 +2,17 @@
 #include "LEDMatrix.h"
 #include <CustomFont.h>
 
-LEDMatrix::LEDMatrix(int pins[], int rows_in, int collumns__in)
+LEDMatrix::LEDMatrix(const int pins[], int rows_in, int collumns__in)
 {
   rows_ = rows_in;
   collumns_ = collumns__in;
   for(uint i = 0; i < 9;i++) rowPins_[i] = pins[i];
   clockPin_ = pins[9];
   AbPin_ = pins[10];
-  Display = new unsigned char[160];
+
+  for(int i = 0; i< rows_*collumns_;i++){
+    Display[i] = 0x00;
+  }
 }
 
 LEDMatrix::~LEDMatrix()
@@ -17,10 +20,38 @@ LEDMatrix::~LEDMatrix()
 }
 
 void LEDMatrix::begin(){
-  for(int i = 0; i< rows_+2; i++){
-    pinMode(i, OUTPUT);
-    digitalWrite(i, i>=rows_?HIGH:LOW);
-  }
+  //for(int i = 0; i< rows_+2; i++){
+    //pinMode(i, OUTPUT);
+    //digitalWrite(i, i>=rows_?HIGH:LOW);
+  //}
+
+   // put your setup code here, to run once:
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
+  pinMode(A3, OUTPUT);
+  pinMode(A4, OUTPUT);
+  pinMode(A5, OUTPUT);
+  pinMode(A6, OUTPUT);
+  pinMode(A7, OUTPUT);
+  pinMode(A8, OUTPUT);
+  pinMode(A9, OUTPUT);
+
+  pinMode(Clk, OUTPUT);
+  pinMode(AB, OUTPUT);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(A1, HIGH);
+  digitalWrite(A2, HIGH);
+  digitalWrite(A3, HIGH);
+  digitalWrite(A4, HIGH);
+  digitalWrite(A5, HIGH);
+  digitalWrite(A6, HIGH);
+  digitalWrite(A7, HIGH);
+  digitalWrite(A8, HIGH);
+  digitalWrite(A9, HIGH);
+
+  digitalWrite(AB, LOW);
+
   clearDisplay();
 }
 
@@ -135,7 +166,7 @@ void LEDMatrix::scrollRightn(int r){
 
 
 void LEDMatrix::clearDisplay(){
-  for(uint i = 0; i < sizeof(Display); i++){
+  for(uint i = 0; i < rows_*collumns_; i++){
   Display[i] = 0x55;
   }
 }
@@ -144,7 +175,8 @@ void LEDMatrix::drawDisplay(){
   for(int row = 0; row <rows_; row++){
     for(int col = 8; col <168; col++){
       digitalWrite(clockPin_, LOW);
-      digitalWrite(AbPin_, (Display[row*collumns_+col/8] & (0b1<<(7-(col%8))))? HIGH:LOW);
+      bool write = Display[row*collumns_+col/8] & (0b1<<(7-(col%8)));
+      digitalWrite(AbPin_, write);
       digitalWrite(clockPin_, HIGH);
       digitalWrite(AbPin_, LOW);
     }

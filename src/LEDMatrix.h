@@ -1,3 +1,18 @@
+#define A1 20
+#define A2 19
+#define A3 15
+#define A4 12
+#define A5 11
+#define A6 8
+#define A7 31
+#define A8 30
+#define A9 21
+
+#define Clk 25
+#define AB 24
+#define ROWS 9
+#define COLS 22
+
 class LEDMatrix{
 
 private:
@@ -7,7 +22,7 @@ private:
     int clockPin_;
     int AbPin_;
     int rowPins_[9];
-    unsigned char *Display;
+    unsigned char Display[];
 //Functions  
     void clearAll();
     void setRow(int row);
@@ -28,6 +43,6 @@ public:
     void scrollLeftn(int l);
     void slowClear();
 //Constructor/Deconstructor
-    LEDMatrix(int pins[], int rows, int cols);
+    LEDMatrix(const int pins[], int rows, int cols);
     ~LEDMatrix();
 };

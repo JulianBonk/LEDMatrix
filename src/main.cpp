@@ -1,14 +1,15 @@
 #include <Arduino.h>
+#include <config.h>
 #include <LEDMatrix.h>
 #include <CustomFont.h>
 #include <GFXFont.h>
-#include <config.h>
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////STARTUP
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-int pins[] = {A1, A2, A3, A4, A5, A6, A7, A8, A9, Clk, AB};
+const int pins[] = {20, 19, 15, 12, 11, 8, 31, 30, 21, 25, 24};
 LEDMatrix Matrix(pins, ROWS, COLS);
 
 void setup(){
