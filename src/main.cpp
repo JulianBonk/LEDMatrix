@@ -6,13 +6,23 @@ const int pins[] = {A1, A2, A3, A4, A5, A6, A7, A8, A9, Clk, AB};
 
 LEDMatrix Matrix(pins, ROWS, COLS);
 
-void setup(){
+int character = 0;
+uint32_t curMillis;
+
+void setup()
+{
   Matrix.begin();
-  //Matrix.addString("   Es weihnachtet sehr!!!");
-  Matrix.setCursor(8, 10);
-  Matrix.addStringGFX("Es weihnachtet sehr!!");
+  Matrix.setCursor(7,20);
+  //Matrix.addStringGFX("Du bist mein Totobaer!");
+  Matrix.addStringGFX("Salve Marius!!");
+  curMillis = millis();
 }
 
-void loop(){
+void loop()
+{
+  if(millis()-curMillis > 70){
+    curMillis = millis();
+    Matrix.infiniteScroll(-1);
+  }
   Matrix.drawDisplay();
 }

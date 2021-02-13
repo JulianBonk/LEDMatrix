@@ -15,23 +15,31 @@ private:
     void clearAll();
     void clearRow(int row);
     void setRow(int row);
+    void addCharGFX(const char character);
+    void setPixel(int row, int col, bool val); 
+
     void scrollRight8();
     void scrollRight1();
-    void scrollLeft1();
-    void scrollLeft8();
     void scrollRightn(int r);
+    void scrollLeft8();
+    void scrollLeft1();  
     void scrollLeftn(int l);
-    void addCharGFX(const char character);
-    void setPixel(int row, int col, bool val);  
 
+    void infiniteScrollRight8();
+    void infiniteScrollRight1();
+    void infiniteScrollRightn(int r);
+    void infiniteScrollLeft8();
+    void infiniteScrollLeft1();
+    void infiniteScrollLeftn(int l);
 public:
 //Functions
-    void begin();      
+    void begin();  
+    void clearDisplay(); 
+    void drawDisplay();   
     void addStringGFX(const char *input); 
-    void clearDisplay();
     void scroll(int scrollAmount);  
+    void infiniteScroll(int scrollAmount);
     void setCursor(int row, int col);
-    void drawDisplay();
 
 //Constructor/Deconstructor
     LEDMatrix(const int pins[], int rows, int cols);
