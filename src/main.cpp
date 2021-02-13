@@ -13,8 +13,7 @@ void setup()
 {
   Matrix.begin();
   Matrix.setCursor(7,20);
-  //Matrix.addStringGFX("Du bist mein Totobaer!");
-  Matrix.addStringGFX("Salve Marius!!");
+  Matrix.addStringGFX("Hello World!");
   curMillis = millis();
 }
 
