@@ -12,3 +12,5 @@
 #define AB 24
 #define ROWS 9
 #define COLS 20 //Columns / 8 (bytes)
+
+#define EPSILON 0.001
