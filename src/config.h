@@ -1,15 +1,15 @@
-#define A1 20
-#define A2 19
-#define A3 15
-#define A4 12
-#define A5 11
-#define A6 8
-#define A7 31
-#define A8 30
-#define A9 21
+#define A1 PB4
+#define A2 PB3
+#define A3 PA15
+#define A4 PA12
+#define A5 PA11
+#define A6 PA8
+#define A7 PB15
+#define A8 PB14
+#define A9 PB5
 
-#define Clk 25
-#define AB 24
+#define Clk PB9
+#define AB PB8
 #define ROWS 9
 #define COLS 20 //Columns / 8 (bytes)
 

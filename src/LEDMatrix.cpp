@@ -356,7 +356,7 @@ void LEDMatrix::drawDisplay()
     setRow(row);
     delayMicroseconds(50);
     clearRow(row);
-    delayMicroseconds(100);
+    delay(1);
   }
 }
 
